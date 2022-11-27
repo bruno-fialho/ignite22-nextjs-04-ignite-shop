@@ -35,7 +35,9 @@ export const CartBadge = styled('div', {
   height: '1.5rem',
   borderRadius: '50%',
   border: 'none',
-  outline: '3px solid $gray900',
+  outlineWidth: '3px',
+  outlineStyle: 'solid',
+  outlineColor: '$gray900',
   color: '$white',
   backgroundColor: '$green500',
 

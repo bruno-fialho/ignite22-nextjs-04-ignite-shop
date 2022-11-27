@@ -2,13 +2,14 @@ import { GetStaticProps } from "next";
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from "next/future/image";
+import { Handbag } from 'phosphor-react'
 import Stripe from "stripe";
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 
 import { stripe } from "../lib/stripe";
 
-import { HomeContainer, Product } from "../styles/pages/home";
+import { CartIconWrapper, HomeContainer, Product } from "../styles/pages/home";
 
 interface HomeProps {
   products: {
@@ -44,8 +45,14 @@ export default function Home({ products }: HomeProps) {
               <Image src={product.imageUrl} width={520} height={480} alt="" />
 
               <footer>
-                <strong>{product.name}</strong>
-                <span>{product.price}</span>
+                <div>
+                  <strong>{product.name}</strong>
+                  <span>{product.price}</span>
+                </div>
+
+                <CartIconWrapper type="button">
+                  <Handbag size={32} weight="bold" />
+                </CartIconWrapper>
               </footer>
             </Product>
           </Link>

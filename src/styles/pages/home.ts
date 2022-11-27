@@ -24,11 +24,12 @@ export const Product = styled('a', {
   },
 
   footer: {
+    minHeight: '6.875rem',
     position: 'absolute',
     bottom: '0.25rem',
     left: '0.25rem',
     right: '0.25rem',
-    padding: '2rem',
+    padding: '1.25rem 2rem 1.25rem 1.25rem',
 
     borderRadius: 4,
 
@@ -42,15 +43,23 @@ export const Product = styled('a', {
     opacity: 0,
     transition: 'all 0.2s ease-in-out',
 
-    'strong': {
-      fontSize: '$lg',
-      color: '$gray100'
-    },
+    div: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      justifyContent: 'space-between',
 
-    'span': {
-      fontSize: '$xl',
-      fontWeight: 'bold',
-      color: '$green300',
+      strong: {
+        fontSize: '$lg',
+        color: '$gray100'
+      },
+  
+      span: {
+        marginTop: '0.25rem',
+        fontSize: '$xl',
+        fontWeight: 'bold',
+        color: '$green300',
+      }
     }
   },
 
@@ -60,4 +69,15 @@ export const Product = styled('a', {
       opacity: 1,
     }
   }
+})
+
+export const CartIconWrapper = styled('button', {
+  width: '3.5rem',
+  height: '3rem',
+  borderRadius: '6px',
+  border: 'none',
+  cursor: 'pointer',
+
+  backgroundColor: '$green500',
+  color: '$white',
 })

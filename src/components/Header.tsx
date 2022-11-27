@@ -1,8 +1,11 @@
-import Image from 'next/future/image'
-import { Handbag, X } from 'phosphor-react'
 import { useEffect, useState } from 'react'
+import Image from 'next/future/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { Handbag } from 'phosphor-react'
 
 import logoImg from '../assets/logo.svg'
+import Cart from './Cart'
 
 import { globalStyles } from '../styles/global'
 import {
@@ -11,13 +14,16 @@ import {
   CartButton,
   Container,
 } from '../styles/components/header'
-import Cart from './Cart'
 
 globalStyles();
 
 export default function Header() {
   const [isShowCart, setIsShowCart] = useState(false);
   const [isAnimationOut, setIsAnimationOut] = useState(false);
+
+  const router = useRouter()
+
+  console.log('router', JSON.stringify(router, null, 2));
 
   function handleCloseCart() {
     setIsAnimationOut(true);
@@ -32,13 +38,19 @@ export default function Header() {
   return (
     <>
       <Container>
-        <Image src={logoImg} alt="" />
+        <Link href="/">
+          <Image 
+            src={logoImg} 
+            alt="" 
+            style={{ cursor: router.pathname === "/"? 'default' : 'pointer' }} 
+          />
+        </Link>
 
         <CartButton onClick={() => {
           setIsAnimationOut(false);
           setIsShowCart(true);
         }}>
-          <Handbag size={24} />
+          <Handbag size={24} weight="bold" />
 
           <CartBadge>
             <CartBadgeText>
