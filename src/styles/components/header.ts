@@ -20,14 +20,26 @@ export const CartButton = styled('button', {
   cursor: 'pointer',
 
   backgroundColor: '$gray800',
-  color: '$gray300', // notEmpty
-  // color: '$gray500', // empty
+  color: '$gray300',
 
   position: 'relative',
 
-  '&:hover': {
-    color: '$gray100', // notEmpty
-  }
+  variants: {
+    type: {
+      empty: {
+        color: '$gray500',
+      },
+      notEmpty: {
+        color: '$gray300',
+
+        '&:hover': {
+          color: '$gray100',
+        }
+      }
+    },
+  },
+
+
 })
 
 export const CartBadge = styled('div', {

@@ -36,6 +36,16 @@ export const SuccessContainer = styled('main', {
   }
 })
 
+export const ImagesContainer = styled('div', {
+  width: '100%',
+
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: '2rem',
+})
+
 export const ImageContainer = styled('div', {
   width: '100%',
   maxWidth: 130,

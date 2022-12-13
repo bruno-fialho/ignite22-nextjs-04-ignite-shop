@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/future/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useShoppingCart } from 'use-shopping-cart'
 import { Handbag } from 'phosphor-react'
 
 import logoImg from '../assets/logo.svg'
@@ -21,9 +22,11 @@ export default function Header() {
   const [isShowCart, setIsShowCart] = useState(false);
   const [isAnimationOut, setIsAnimationOut] = useState(false);
 
-  const router = useRouter()
+  const {
+    cartCount,
+  } = useShoppingCart()
 
-  console.log('router', JSON.stringify(router, null, 2));
+  const router = useRouter()
 
   function handleCloseCart() {
     setIsAnimationOut(true);
@@ -39,24 +42,31 @@ export default function Header() {
     <>
       <Container>
         <Link href="/">
-          <Image 
-            src={logoImg} 
-            alt="" 
-            style={{ cursor: router.pathname === "/"? 'default' : 'pointer' }} 
-          />
+          <a>
+            <Image 
+              src={logoImg} 
+              alt="" 
+              style={{ cursor: router.pathname === "/"? 'default' : 'pointer' }} 
+            />
+          </a>
         </Link>
 
-        <CartButton onClick={() => {
-          setIsAnimationOut(false);
-          setIsShowCart(true);
-        }}>
+        <CartButton 
+          onClick={() => {
+            setIsAnimationOut(false);
+            setIsShowCart(true);
+          }}
+          type={cartCount === 0 ? 'empty' : 'notEmpty'}
+        >
           <Handbag size={24} weight="bold" />
 
-          <CartBadge>
-            <CartBadgeText>
-              3
-            </CartBadgeText>
-          </CartBadge>
+          {cartCount > 0 && (
+            <CartBadge>
+              <CartBadgeText>
+                {cartCount}
+              </CartBadgeText>
+            </CartBadge>
+          )}
         </CartButton>
       </Container>
 
